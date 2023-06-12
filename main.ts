@@ -1,3 +1,10 @@
+namespace SpriteKind {
+    export const soccerball = SpriteKind.create()
+}
+let ball: Sprite = null
+let player_1: Sprite = null
+let player_3: Sprite = null
+let player_2: Sprite = null
 controller.player2.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Pressed, function () {
     ball.follow(player_1)
 })
@@ -276,13 +283,9 @@ controller.player1.onEvent(ControllerEvent.Connected, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Player)
-    ball = sprites.create(assets.image`ball`, SpriteKind.Projectile)
     controller.player1.moveSprite(player_1)
+    ball = sprites.create(assets.image`ball`, SpriteKind.soccerball)
     player_1.setStayInScreen(true)
+    ball.setBounceOnWall(true)
+    ball.setVelocity(0, -50)
 })
-let player_2: Sprite = null
-let player_3: Sprite = null
-let player_1: Sprite = null
-let ball: Sprite = null
-music.play(music.createSong(assets.song`soss`), music.PlaybackMode.LoopingInBackground)
-tiles.setCurrentTilemap(tilemap`level1`)
